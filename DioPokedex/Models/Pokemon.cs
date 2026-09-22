@@ -2,6 +2,7 @@
 
 public enum PokemonType
 {
+    None,
     Normal,
     Fogo,
     Agua,
@@ -53,9 +54,9 @@ public class Pokemon
         
         set
         {
-            if (!Enum.IsDefined(typeof(PokemonType), value))
+            if (!Enum.IsDefined(typeof(PokemonType), value) ||  value == PokemonType.None)
             {
-                throw new ArgumentOutOfRangeException(nameof(PrimaryType), "Tipo inválido. Escolha novamente...");
+                throw new ArgumentException(nameof(PrimaryType), "Tipo inválido ou vazio. Escolha novamente...");
             }
             _primaryType = value;
         }
@@ -96,12 +97,13 @@ public class Pokemon
         set => _description = value;
     }
 
-    public Pokemon(string name, PokemonType type, bool isLegendary, string spriteUrl, string description)
+    public Pokemon(string name, PokemonType primaryType, PokemonType secondaryType, bool isLegendary, string spriteUrl, string description)
     {
         _id = _idCounter++;
         
         this.Name = name;
-        this.PrimaryType = type;
+        this.PrimaryType = primaryType;
+        this.SecondaryType = secondaryType;
         this.IsLegendary = isLegendary;
         this.SpriteUrl = spriteUrl;
         this.Description = description;
