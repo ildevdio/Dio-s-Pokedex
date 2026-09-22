@@ -1,6 +1,5 @@
 ﻿using DioPokedex.DTOs;
 using DioPokedex.Models;
-using System.Collections.Generic;
 
 namespace DioPokedex.Services;
 
