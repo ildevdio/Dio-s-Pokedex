@@ -30,8 +30,10 @@ public class Pokemon
     private PokemonType _primaryType;
     private PokemonType _secondaryType;
     private bool _isLegendary = false;
+    private bool _isDiscovered = false;
     private string _spriteUrl = string.Empty;
     private string _description = string.Empty;
+    public string DisplayName => _isDiscovered ? _name : "???";
 
     public int Id => _id;
     public string Name
@@ -42,9 +44,12 @@ public class Pokemon
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("Nome não pode estar vazio...");
+                throw new ArgumentException("Nome não pode ser vazio...");
             }
-            _name = value;
+            else
+            {
+                _name = value;   
+            }
         }
     }
 
@@ -82,6 +87,13 @@ public class Pokemon
         
         set => _isLegendary = value;
     }
+
+    public bool IsDiscovered
+    {
+        get => _isDiscovered;
+        
+        set => _isDiscovered = value;
+    }
     
     public string SpriteUrl
     {
@@ -97,7 +109,7 @@ public class Pokemon
         set => _description = value;
     }
 
-    public Pokemon(string name, PokemonType primaryType, PokemonType secondaryType, bool isLegendary, string spriteUrl, string description)
+    public Pokemon(string name, PokemonType primaryType, PokemonType secondaryType, bool isLegendary, bool isDiscovered, string spriteUrl, string description)
     {
         _id = _idCounter++;
         
@@ -105,6 +117,7 @@ public class Pokemon
         this.PrimaryType = primaryType;
         this.SecondaryType = secondaryType;
         this.IsLegendary = isLegendary;
+        this.IsDiscovered = isDiscovered;
         this.SpriteUrl = spriteUrl;
         this.Description = description;
     }
