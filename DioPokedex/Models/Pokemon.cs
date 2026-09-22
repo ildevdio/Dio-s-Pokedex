@@ -70,7 +70,7 @@ public class Pokemon
         {
             if (!Enum.IsDefined(typeof(PokemonType), value))
             {
-                throw new ArgumentOutOfRangeException(nameof(SecondaryType), "Tipo inválido. Escolha novamente...");
+                throw new ArgumentException(nameof(SecondaryType), "Tipo inválido. Escolha novamente...");
             }
             _secondaryType = value;
         }
