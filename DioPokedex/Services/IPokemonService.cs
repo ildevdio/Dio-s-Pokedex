@@ -2,7 +2,7 @@
 using DioPokedex.Models;
 using System.Collections.Generic;
 
-namespace DioPokedex.Services
+namespace DioPokedex.Services;
 
 public interface IPokemonService
 {
