@@ -61,7 +61,7 @@ public class Pokemon
         {
             if (!Enum.IsDefined(typeof(PokemonType), value) ||  value == PokemonType.None)
             {
-                throw new ArgumentException(nameof(PrimaryType), "Tipo inválido ou vazio. Escolha novamente...");
+                throw new ArgumentException("Tipo inválido ou vazio. Escolha novamente...", nameof(PrimaryType));
             }
             _primaryType = value;
         }
@@ -75,7 +75,7 @@ public class Pokemon
         {
             if (!Enum.IsDefined(typeof(PokemonType), value))
             {
-                throw new ArgumentException(nameof(SecondaryType), "Tipo inválido. Escolha novamente...");
+                throw new ArgumentException("Tipo inválido. Escolha novamente...", nameof(SecondaryType));
             }
             _secondaryType = value;
         }
